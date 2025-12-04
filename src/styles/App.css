@@ -1,0 +1,191 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #f5f5f5;
+}
+
+.app-container {
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.app-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+  padding: 20px;
+}
+
+.app-header h1 {
+  margin: 0 0 10px 0;
+  font-size: 2.5rem;
+}
+
+.app-header p {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+.app-main {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 600;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+}
+
+.btn-secondary {
+  background: #e0e0e0;
+  color: #333;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #d0d0d0;
+  transform: translateY(-2px);
+}
+
+.error-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: #ffebee;
+  border: 1px solid #ff6b6b;
+  border-radius: 6px;
+  color: #d32f2f;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    padding: 15px;
+  }
+
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+.test-buttons {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f5f5f5;
+  border: 1px dashed #ccc;
+  border-radius: 6px;
+}
+
+.btn-test {
+  background: #f0f0f0;
+  color: #333;
+  border: 1px solid #ddd;
+  margin-right: 10px;
+}
+
+.btn-test:hover {
+  background: #e0e0e0;
+}
+
+.init-message {
+  padding: 15px;
+  background: #e3f2fd;
+  border: 1px solid #bbdefb;
+  border-radius: 6px;
+  color: #1976d2;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.solution-message {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  border: 1px solid #4CAF50;
+  border-radius: 6px;
+  color: white;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.solution-preview {
+  margin-top: 10px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  word-break: break-all;
+}
+.solution-container {
+  margin-top: 30px;
+}
+
+.solution-header {
+  padding: 15px;
+  background: linear-gradient(135deg, #4CAF50, #45a049);
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.solution-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}

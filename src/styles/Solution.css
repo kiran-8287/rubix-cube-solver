@@ -1,0 +1,238 @@
+.color-palette {
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 8px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.color-palette h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.1rem;
+}
+
+.color-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.color-btn {
+  width: 50px;
+  height: 50px;
+  border: 3px solid transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.color-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.color-btn.active {
+  border-color: white;
+  box-shadow: 0 0 0 3px rgba(255,255,255,0.5);
+}
+
+.selected-color-display {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.validation-panel {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 6px;
+  color: #856404;
+}
+
+.validation-panel h3 {
+  margin: 0 0 10px 0;
+  font-size: 1rem;
+}
+
+.validation-panel ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.validation-panel li {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.solution-walkthrough {
+  margin-top: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  border-radius: 8px;
+  color: white;
+}
+
+.walkthrough-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 10px;
+}
+
+.walkthrough-header h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.move-counter {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.move-display {
+  text-align: center;
+  margin: 30px 0;
+  position: relative;
+}
+
+.current-move-large {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.solved-badge {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background: #4CAF50;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: 600;
+  animation: bounce 0.6s ease-in-out;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(-50%) scale(1); }
+  50% { transform: translateY(-50%) scale(1.1); }
+}
+
+.next-moves {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+}
+
+.next-moves strong {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 0.85rem;
+}
+
+.moves-list {
+  font-family: monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  word-break: break-all;
+}
+
+.walkthrough-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.btn-control,
+.btn-play {
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-control:hover:not(:disabled),
+.btn-play:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-control:disabled,
+.btn-play:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-play {
+  background: #4CAF50;
+  border-color: #4CAF50;
+  min-width: 100px;
+}
+
+.btn-play:hover {
+  background: #45a049;
+}
+
+.move-history {
+  margin-top: 20px;
+}
+
+.all-moves-label {
+  margin: 0 0 8px 0;
+  font-size: 0.85rem;
+  opacity: 0.9;
+}
+
+.all-moves-display {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.move-badge {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.move-badge:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.move-badge.completed {
+  opacity: 0.6;
+  text-decoration: line-through;
+}
+
+.move-badge.active {
+  background: white;
+  color: #f5576c;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
