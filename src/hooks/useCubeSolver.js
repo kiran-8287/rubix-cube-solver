@@ -11,11 +11,12 @@ export const useCubeSolver = () => {
 
   useEffect(() => {
     console.log('Hook: Creating worker...');
-    const worker = new Worker('/cubeWorker.js');
+    const workerUrl = `${import.meta.env.BASE_URL}cubeWorker.js`;
+    const worker = new Worker(workerUrl);
     workerRef.current = worker;
 
     worker.onmessage = (event) => {
-      const { type, solution: sol, moves: mv, error: err, moveCount } = event.data;
+      const { type, solution: sol, moves: mv, error: err } = event.data;
 
       console.log('Hook: Worker message type:', type);
 
@@ -36,9 +37,11 @@ export const useCubeSolver = () => {
       }
     };
 
-    worker.onerror = (error) => {
-      console.error('Hook: Worker error:', error.message);
-      setError(`Worker error: ${error.message}`);
+    worker.onerror = (ev) => {
+      // Provide richer diagnostics if message is missing
+      const msg = ev?.message || ev?.error?.message || 'Unknown worker error';
+      console.error('Hook: Worker error event:', ev);
+      setError(`Worker error: ${msg}`);
       setSolverReady(false);
     };
 
