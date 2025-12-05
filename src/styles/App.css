@@ -2,7 +2,8 @@
   position: relative;
   min-height: 100vh;
   padding: 32px 24px 48px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .app-container::before,
@@ -29,6 +30,7 @@
   flex-direction: column;
   gap: 22px;
   z-index: 1;
+  padding-bottom: 80px; /* Space for mobile action bar */
 }
 
 .glass-card {
@@ -40,6 +42,8 @@
   border-radius: 20px;
   padding: 20px;
   transition: transform var(--transition-slow), box-shadow var(--transition-slow), border-color var(--transition-slow);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .glass-card:hover {
@@ -212,12 +216,31 @@
   margin-top: 18px;
 }
 
+.action-buttons .btn {
+  flex: 1 1 auto;
+  min-width: 140px;
+}
+
 .mobile-action-bar {
   display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  padding: 12px;
+  background: var(--bg-gradient);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--glass-border);
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .mobile-action-inner {
   display: none;
+  gap: 10px;
+  max-width: min(var(--content-width-xl), 100%);
+  margin: 0 auto;
 }
 
 .btn {
@@ -232,6 +255,9 @@
   overflow: hidden;
   transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
   min-height: 48px;
+  min-width: 48px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn::after {
@@ -350,6 +376,11 @@
   margin-top: 16px;
 }
 
+.solution-actions .btn {
+  flex: 1 1 auto;
+  min-width: 140px;
+}
+
 .solution-preview {
   margin-top: 10px;
   padding: 14px;
@@ -422,51 +453,151 @@
 
 @media (max-width: 1023px) { /* Tablet MD */ 
   .app-container {
-    padding: 24px 16px 40px;
+    padding: 20px 12px 100px;
+  }
+  .app-shell {
+    padding-bottom: 100px;
   }
   .grid-two {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .glass-card {
+    padding: 16px;
+  }
+  .action-buttons {
+    gap: 10px;
+  }
+  .action-buttons .btn {
+    min-width: 120px;
+    flex: 1 1 calc(50% - 5px);
   }
 }
 
 @media (max-width: 767px) { /* Mobile SM */ 
+  .app-container {
+    padding: 16px 10px 90px;
+  }
+  .app-shell {
+    padding-bottom: 90px;
+    gap: 16px;
+  }
   .app-header {
     position: relative;
     top: 0;
+    padding: 12px 14px;
   }
   .header-top {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .glass-card {
+    padding: 14px;
+    border-radius: 16px;
+  }
+  .section-title {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .section-title h3 {
+    font-size: 1.4rem;
   }
   .action-buttons {
     display: none;
   }
   .mobile-action-bar {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 10px;
-    padding: 10px 12px;
-    z-index: 10;
+    display: block;
   }
   .mobile-action-inner {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .mobile-action-inner .btn {
+    width: 100%;
+    min-height: 52px;
+    font-size: 1rem;
+    padding: 16px 18px;
+  }
+  .solution-actions {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .solution-actions .btn {
+    width: 100%;
+    min-width: unset;
   }
   .btn {
-    width: 100%;
+    font-size: 0.95rem;
+    padding: 12px 16px;
+  }
+  .hero h2 {
+    font-size: 1.6rem;
+  }
+  .hero p {
+    font-size: 0.9rem;
   }
 }
 
 @media (max-width: 480px) { /* Mobile XS */ 
+  .app-container {
+    padding: 12px 8px 85px;
+  }
+  .app-shell {
+    padding-bottom: 85px;
+    gap: 12px;
+  }
   .brand h1 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
   }
   .hero h2 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+  }
+  .hero p {
+    font-size: 0.85rem;
   }
   .pill {
     width: 100%;
     text-align: center;
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+  .glass-card {
+    padding: 12px;
+    border-radius: 14px;
+  }
+  .section-title h3 {
+    font-size: 1.2rem;
+  }
+  .status-chip {
+    font-size: 0.85rem;
+    padding: 5px 8px;
+  }
+  .mobile-action-bar {
+    padding: 10px 8px;
+  }
+  .mobile-action-inner .btn {
+    min-height: 50px;
+    font-size: 0.95rem;
+    padding: 14px 16px;
+  }
+  .solution-actions .btn {
+    min-height: 48px;
+    font-size: 0.9rem;
+    padding: 12px 14px;
+  }
+  .icon-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .ghost-btn {
+    padding: 8px 12px;
+    font-size: 0.85rem;
   }
 }

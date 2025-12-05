@@ -56,7 +56,11 @@
   border: 1px dashed var(--glass-border);
   background: rgba(255, 255, 255, 0.03);
   overflow-x: auto;
+  overflow-y: visible;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  width: 100%;
+  box-sizing: border-box;
+  -webkit-overflow-scrolling: touch;
 }
 
 .face {
@@ -128,7 +132,14 @@
   .cube-net {
     grid-template-columns: 1fr auto auto 1fr;
     overflow-x: auto;
+    overflow-y: visible;
+    padding: 14px;
+    gap: 12px;
     padding-bottom: 18px;
+  }
+  .face {
+    padding: 8px;
+    gap: 5px;
   }
 }
 
@@ -142,15 +153,32 @@
       "R B"
       "D D";
     justify-items: center;
-    padding: 12px;
+    padding: 10px;
+    gap: 10px;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+  }
+  .face {
+    padding: 8px;
+    gap: 4px;
+    max-width: 100%;
   }
   .face-U,
   .face-D {
     justify-self: center;
     grid-column: 1 / -1;
+    width: fit-content;
   }
   .face h4 {
     transform: rotate(-90deg);
+    font-size: 0.85rem;
+  }
+  .cube-input-container {
+    gap: 12px;
+  }
+  .progress-section {
+    gap: 8px;
   }
 }
 
@@ -165,11 +193,29 @@
       "R"
       "B"
       "D";
+    padding: 8px;
+    gap: 8px;
+    overflow-x: visible;
+    overflow-y: visible;
   }
   .face {
     justify-self: center;
+    padding: 6px;
+    gap: 3px;
+    width: fit-content;
   }
   .face h4 {
     transform: rotate(0deg);
+    font-size: 0.8rem;
+    margin-bottom: 4px;
+  }
+  .cube-input-container {
+    gap: 10px;
+  }
+  .progress-section h3 {
+    font-size: 0.95rem;
+  }
+  .progress-text {
+    font-size: 0.85rem;
   }
 }

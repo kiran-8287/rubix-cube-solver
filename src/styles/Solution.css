@@ -228,6 +228,25 @@
   }
   .color-buttons {
     grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    gap: 10px;
+  }
+  .color-btn {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+  }
+  .solution-walkthrough {
+    padding: 14px;
+  }
+  .walkthrough-controls {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .walkthrough-controls .btn-control {
+    min-height: 48px;
+    flex: 1 1 auto;
+    min-width: 100px;
   }
 }
 
@@ -239,5 +258,29 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+  }
+  .color-buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .color-btn {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 1.1rem;
+  }
+  .solution-walkthrough {
+    padding: 12px;
+  }
+  .walkthrough-controls {
+    flex-direction: column;
+  }
+  .walkthrough-controls .btn-control {
+    width: 100%;
+    min-width: unset;
+  }
+  .move-counter {
+    font-size: 0.9rem;
   }
 }

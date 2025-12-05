@@ -379,20 +379,51 @@ function App() {
         </footer>
       </div>
 
-      <div className="mobile-action-bar glass-card" aria-hidden>
+      <div className="mobile-action-bar glass-card">
         <div className="mobile-action-inner">
           <button
             className="btn btn-primary"
             onClick={handleValidateAndSolve}
             disabled={progressCount < 54 || solving || !solverReady}
+            aria-label={!solverReady ? 'Initializing solver' : solving ? 'Solving cube' : progressCount === 54 ? 'Solve cube' : `Fill cube (${progressCount}/54 stickers)`}
           >
-            {solving ? 'Solving…' : 'Solve'}
+            {!solverReady
+              ? '⏳ Initializing...'
+              : solving
+              ? '⚙️ Solving...'
+              : progressCount === 54
+              ? '✅ Solve Cube'
+              : `Fill (${progressCount}/54)`}
           </button>
           <button
             className="btn btn-secondary"
-            onClick={() => dispatch({ type: 'CLEAR_CUBE' })}
+            onClick={() => {
+              setIsAlreadySolved(false);
+              dispatch({ type: 'CLEAR_CUBE' });
+            }}
+            aria-label="Clear all stickers"
           >
-            Clear
+            🗑️ Clear All
+          </button>
+          <button
+            className="btn btn-ghost"
+            onClick={() => {
+              setIsAlreadySolved(false);
+              loadTestCube(SOLVED_CUBE, dispatch);
+            }}
+            aria-label="Load solved test cube"
+          >
+            ✅ Solved
+          </button>
+          <button
+            className="btn btn-ghost"
+            onClick={() => {
+              setIsAlreadySolved(false);
+              loadTestCube(SIMPLE_SCRAMBLE, dispatch);
+            }}
+            aria-label="Load scrambled test cube"
+          >
+            🎲 Scramble
           </button>
         </div>
       </div>

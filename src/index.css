@@ -57,6 +57,8 @@ body {
   display: flex;
   justify-content: center;
   width: 100%;
+  overflow-x: hidden;
+  position: relative;
 }
 
 #root {
@@ -125,5 +127,9 @@ button {
 @media (max-width: 480px) {
   :root {
     --content-width-sm: var(--content-width-xs);
+  }
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
   }
 }
