@@ -1,141 +1,175 @@
+:root {
+  --sticker-size: 70px;
+}
+
 .cube-input-container {
-  padding: 20px;
-  background: #f9f9f9;
-  border-radius: 8px;
-  margin: 20px 0;
+  display: grid;
+  gap: 16px;
 }
 
 .progress-section {
-  margin-bottom: 30px;
+  display: grid;
+  gap: 10px;
 }
 
 .progress-section h3 {
-  margin: 0 0 10px 0;
-  font-size: 1.2rem;
+  margin: 0;
+  font-size: 1.05rem;
 }
 
 .progress-bar {
   width: 100%;
-  height: 20px;
-  background: #e0e0e0;
-  border-radius: 10px;
+  height: 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
   overflow: hidden;
-  margin-bottom: 8px;
+  position: relative;
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #4CAF50, #45a049);
-  transition: width 0.3s ease;
+  background: linear-gradient(90deg, #E32636, #FDDA0D, #7CFC00);
+  transition: width 260ms ease;
+  border-radius: inherit;
 }
 
 .progress-text {
   margin: 0;
-  font-size: 0.9rem;
-  color: #666;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
 }
 
 .cube-net {
+  position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  grid-template-columns: 1fr auto auto 1fr;
   grid-template-areas:
     ". U U ."
     "L F R B"
     ". D D .";
+  gap: 16px;
   justify-items: center;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  border: 2px solid #ddd;
+  align-items: center;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px dashed var(--glass-border);
+  background: rgba(255, 255, 255, 0.03);
+  overflow-x: auto;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 }
 
 .face {
   display: grid;
-  grid-template-columns: repeat(3, 60px);
-  gap: 4px;
-  padding: 8px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background: #fafafa;
+  grid-template-columns: repeat(3, var(--sticker-size));
+  gap: 6px;
+  padding: 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-1);
 }
 
 .face h4 {
   grid-column: 1 / -1;
-  margin: 0 0 8px 0;
+  margin: 0 0 6px;
   text-align: center;
-  font-size: 0.85rem;
-  color: #555;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.3px;
 }
 
-.face-U { grid-area: U; }
+.face-U { 
+  grid-area: U; 
+  justify-self: center;
+}
 .face-R { grid-area: R; }
 .face-F { grid-area: F; }
 .face-L { grid-area: L; }
-.face-D { grid-area: D; }
+.face-D { 
+  grid-area: D; 
+  justify-self: center;
+}
 .face-B { grid-area: B; }
 
 .sticker {
-  width: 60px;
-  height: 60px;
-  border: 1px solid #333;
-  border-radius: 4px;
+  width: var(--sticker-size);
+  height: var(--sticker-size);
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.15s ease;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 140ms ease, box-shadow 140ms ease, border-color 140ms ease;
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.2), 0 6px 12px rgba(0,0,0,0.25);
   background-color: #f0f0f0;
-  font-weight: bold;
+  font-weight: 700;
 }
 
 .sticker:hover:not(:disabled) {
-  transform: scale(1.08);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  transform: scale(1.05) translateZ(0);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.35);
 }
 
 .sticker.selected {
-  border: 3px solid #000;
-  box-shadow: 0 0 0 2px #333;
+  border: 3px solid #9b6bff;
+  box-shadow: 0 0 0 3px rgba(155, 107, 255, 0.3);
 }
 
 .sticker.empty {
-  background: linear-gradient(135deg, #f0f0f0 25%, transparent 25%) -15px 0,
-              linear-gradient(225deg, #f0f0f0 25%, transparent 25%) -15px 0,
-              linear-gradient(315deg, #f0f0f0 25%, transparent 25%),
-              linear-gradient(45deg, #f0f0f0 25%, transparent 25%);
-  background-size: 30px 30px;
-  background-color: #e0e0e0;
+  background: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.18) 10px, rgba(0, 0, 0, 0.06) 10px, rgba(0, 0, 0, 0.06) 20px);
 }
 
-@media (max-width: 900px) {
+/* Breakpoints */
+@media (max-width: 1439px) { /* Desktop LG */
+  :root { --sticker-size: 65px; }
+}
+
+@media (max-width: 1023px) { /* Tablet MD */
+  :root { --sticker-size: 55px; }
   .cube-net {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-
-  .face {
-    grid-template-columns: repeat(3, 50px);
-    gap: 2px;
-  }
-
-  .sticker {
-    width: 50px;
-    height: 50px;
+    grid-template-columns: 1fr auto auto 1fr;
+    overflow-x: auto;
+    padding-bottom: 18px;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 767px) { /* Mobile SM */
+  :root { --sticker-size: 45px; }
   .cube-net {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "U U"
+      "L F"
+      "R B"
+      "D D";
+    justify-items: center;
+    padding: 12px;
   }
+  .face-U,
+  .face-D {
+    justify-self: center;
+    grid-column: 1 / -1;
+  }
+  .face h4 {
+    transform: rotate(-90deg);
+  }
+}
 
+@media (max-width: 480px) { /* Mobile XS */
+  :root { --sticker-size: 35px; }
+  .cube-net {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "U"
+      "L"
+      "F"
+      "R"
+      "B"
+      "D";
+  }
   .face {
-    grid-template-columns: repeat(3, 40px);
+    justify-self: center;
   }
-
-  .sticker {
-    width: 40px;
-    height: 40px;
-    font-size: 0.7rem;
+  .face h4 {
+    transform: rotate(0deg);
   }
 }

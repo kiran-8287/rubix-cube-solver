@@ -16,7 +16,8 @@ export const useCubeSolver = () => {
     workerRef.current = worker;
 
     worker.onmessage = (event) => {
-      const { type, solution: sol, moves: mv, error: err } = event.data;
+      console.log('Hook: Raw worker message:', event.data);
+      const { type, solution: sol, moves: mv, moveCount, error: err } = event.data;
 
       console.log('Hook: Worker message type:', type);
 
@@ -25,9 +26,18 @@ export const useCubeSolver = () => {
         setSolverReady(true);
         setInitProgress('');
       } else if (type === 'SOLVED') {
-        console.log('Hook: Received solution');
+        console.log('Hook: Received solution:', sol?.substring(0, 50));
+        console.log('Hook: Received moves:', mv);
+        
+        // Ensure moves is an array
+        const movesArray = Array.isArray(mv) && mv.length > 0 
+          ? mv 
+          : (sol ? sol.trim().split(/\s+/).filter(Boolean) : []);
+        
+        console.log('Hook: Processed moves array:', movesArray);
+        
         setSolution(sol);
-        setMoves(mv || []);
+        setMoves(movesArray);
         setSolving(false);
         setError(null);
       } else if (type === 'ERROR') {
